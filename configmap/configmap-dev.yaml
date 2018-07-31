@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-dev
+  namespace: default
+data:
+  DB_URL: localhost
+  DB_USER: myuser
+  DB_PASS: mypass
+  DEBUG_INFO: debug

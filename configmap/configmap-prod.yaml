@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-prod
+  namespace: default
+data:
+  DB_URL: prodhost
+  DB_USER: produser
+  DB_PASS: produser
+  DEBUG_INFO: production
