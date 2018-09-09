@@ -19,3 +19,6 @@ spec:
         image: arisu1000/simple-container-app:latest
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: 50m
