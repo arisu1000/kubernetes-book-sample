@@ -27,3 +27,5 @@ spec:
     # CLI에서 사용할 줄인 단어
     shortNames:
     - mpod
+    categories:
+    - all
