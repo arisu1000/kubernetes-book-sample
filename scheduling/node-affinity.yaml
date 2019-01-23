@@ -20,6 +20,10 @@ spec:
             - window
           - key: disktype
             operator: Exists
+          - key: core
+            operator: Gt  
+            values: 
+            - "4"
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 10
         preference:
