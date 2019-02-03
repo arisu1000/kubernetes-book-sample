@@ -16,7 +16,7 @@ spec:
     spec:
       hostname: appname
       subdomain: default-subdomain
-      dnsPolicy: clusterFirst
+      dnsPolicy: ClusterFirst
       containers:
       - name: kubernetes-simple-app
         image: arisu1000/simple-container-app:latest
