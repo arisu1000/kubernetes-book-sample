@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM BASEIMAGE
+FROM centos:7
 
-CROSS_BUILD_COPY qemu-QEMUARCH-static /usr/bin/
+# CROSS_BUILD_COPY qemu-QEMUARCH-static /usr/bin/
 RUN yum -y install /usr/bin/ps nfs-utils && yum clean all
 RUN mkdir -p /exports
 ADD run_nfs.sh /usr/local/bin/

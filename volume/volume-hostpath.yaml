@@ -14,5 +14,5 @@ spec:
   volumes:
   - name: hostpath-vol
     hostPath:
-      path: /tmp
+      path: /tmpasdfasdf
       type: Directory
