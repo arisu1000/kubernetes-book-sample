@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-simple-pod
+  labels:
+    app: nfs-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nfs-client
+  template:
+    metadata:
+      labels:
+        app: nfs-client
+    spec:
+      containers:
+      - name: kubernetes-simple-pod
+        image: arisu1000/simple-container-app:latest
+        volumeMounts:
+        - mountPath: /test-nfs
+          name: nfs-vol
+        ports:
+        - containerPort: 8080
+        securityContext:
+          privileged: true
+      volumes:
+      - name: nfs-vol
+        nfs:
+          #change your own pod ip
+          server: 10.1.0.66
+          path: /
