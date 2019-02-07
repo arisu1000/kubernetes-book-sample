@@ -22,11 +22,9 @@ spec:
           name: nfs-vol
         ports:
         - containerPort: 8080
-        securityContext:
-          privileged: true
       volumes:
       - name: nfs-vol
         nfs:
-          #change your own pod ip
-          server: 10.1.0.66
+          #여기에 nfs-server pod의 ip를 넣습니다.
+          server: 10.1.0.75
           path: /
