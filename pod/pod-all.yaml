@@ -12,7 +12,7 @@ spec:
   - name: init-mydb
     image: arisu1000/simple-container-app:latest
     command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
-containers:
+  containers:
   - name: kubernetes-simple-pod
     image: arisu1000/simple-container-app:latest
     resources:
