@@ -8,10 +8,10 @@ spec:
   initContainers:
   - name: init-myservice
     image: arisu1000/simple-container-app:latest
-    command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+    command: ['sh', '-c', 'sleep 2; echo helloworld01;']
   - name: init-mydb
     image: arisu1000/simple-container-app:latest
-    command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
+    command: ['sh', '-c', 'sleep 2; echo helloworld02;']
   containers:
   - name: kubernetes-simple-pod
     image: arisu1000/simple-container-app:latest
