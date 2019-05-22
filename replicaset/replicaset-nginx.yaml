@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: nginx-app
-        image: nginx-app
+        image: nginx
         ports:
         - containerPort: 80
   replicas: 3
