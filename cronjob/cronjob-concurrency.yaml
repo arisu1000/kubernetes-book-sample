@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello-concurrency
+spec:
+  schedule: "*/1 * * * *"
+  startingDeadlineSeconds: 600
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster; sleep 6000
+          restartPolicy: OnFailure
