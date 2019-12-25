@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-deployment
+  # annotations:
+    # kubernetes.io/change-cause: version 1.10.1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - name: nginx-deployment
+        image: nginx
+        ports:
+        - containerPort: 80

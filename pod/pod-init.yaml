@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-simple-pod
+  labels:
+    app: kubernetes-simple-pod
+spec:
+  initContainers:
+  - name: init-myservice
+    image: arisu1000/simple-container-app:latest
+    command: ['sh', '-c', 'sleep 2; echo helloworld01;']
+  - name: init-mydb
+    image: arisu1000/simple-container-app:latest
+    command: ['sh', '-c', 'sleep 2; echo helloworld02;']
+  containers:
+  - name: kubernetes-simple-pod 
+    image: arisu1000/simple-container-app:latest
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']

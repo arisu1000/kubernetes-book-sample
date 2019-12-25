@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: websample
+spec:
+  selector:
+    matchLabels:
+      run: websample
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: websample
+    spec:
+      containers:
+      - image: acadx0/190713:v1
+        imagePullPolicy: Always
+        name: websample
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 5000
+        lifecycle:
+          preStop:
+            httpGet:
+              path: /prestop
+              port: 5000
+      terminationGracePeriodSeconds: 30

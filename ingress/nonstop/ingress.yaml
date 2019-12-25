@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: websample-ing
+spec:
+  rules:
+  - host: http://127.0.0.1.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: websample
+          servicePort: 5000
+        path: /

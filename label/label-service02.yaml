@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: label-stable-service
+spec:
+  type: ClusterIP
+  selector:
+    release: stable
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

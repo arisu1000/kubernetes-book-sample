@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-volume
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+  - ReadWriteOnce
+  hostPath:
+    path: /tmp/test-lv
+  persistentVolumeReclaimPolicy: Recycle

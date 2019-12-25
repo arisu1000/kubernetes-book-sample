@@ -1,0 +1,31 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # name : 아래의 spec 필드와 맞아야 한다. spec의 plural와 group를 조합한 값이와야 한다. <plural>.<group>
+  name: mypods.crd.example.com
+spec:
+  # REST API 용 그룹 이름: /apis/<group>/<version>
+  group: crd.example.com
+  # API 버전
+  version: v1
+  # 이 CustomResourceDefinition이 지원하는 버전 정보
+  versions:
+  - name: v1
+    # 버전이 사용가능한지 아닌지를 표시
+    served: true
+    # 스토리지 버전으로 지정되어야 하는 버전
+    storage: true
+  # Namespaced/Cluster 범위 표시
+  scope: Namespaced
+  names:
+    # api URL에서 사용할 복수형 이름 : /apis/<group>/<version>/<plural>
+    plural: mypods
+    # CLI에서 사용할 단수형 이름
+    singular: mypod
+    # kind에 사용할 단수형 단어. 카멜케이스 형식.
+    kind: MyPod
+    # CLI에서 사용할 줄인 단어
+    shortNames:
+    - mpod
+    categories:
+    - all

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-nfsapp-pod
+  labels:
+    app: nfs-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nfs-client
+  template:
+    metadata:
+      labels:
+        app: nfs-client
+    spec:
+      containers:
+      - name: kubernetes-nfsapp-pod
+        image: arisu1000/simple-container-app:latest
+        volumeMounts:
+        - mountPath: /test-nfs
+          name: nfs-vol
+        ports:
+        - containerPort: 8080
+      volumes:
+      - name: nfs-vol
+        nfs:
+          server: 10.1.6.126    # 여기에 nfs-server pod의 ip를 넣습니다.
+          path: /

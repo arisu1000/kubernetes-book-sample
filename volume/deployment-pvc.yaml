@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-simple-app
+  labels:
+    app: kubernetes-simple-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetes-simple-app
+  template:
+    metadata:
+      labels:
+        app: kubernetes-simple-app
+    spec:
+      containers:
+      - name: kubernetes-simple-app
+        image: arisu1000/simple-container-app:latest
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: "/tmp"
+          name: myvolume
+      volumes:
+      - name: myvolume
+        persistentVolumeClaim:
+          claimName: pvc-hostpath

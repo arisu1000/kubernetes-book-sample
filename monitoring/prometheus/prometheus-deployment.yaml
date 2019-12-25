@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-app
+  labels:
+    app: prometheus-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-app
+  template:
+    metadata:
+      labels:
+        app: prometheus-app
+    spec:
+      containers:
+      - name: prometheus-app
+        image: prom/prometheus:v2.3.2
+        args:
+        - "--config.file=/etc/prometheus/prometheus-kubernetes-config.yaml"
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/prometheus
+        - name: storage-volume
+          mountPath: /prometheus/
+      volumes:
+      - name: config-volume
+        configMap:
+          name: prometheus-kubernetes
+      - name: storage-volume
+        emptyDir: {}
+---          
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus-app
+  name: prometheus-app-svc
+  namespace: default
+spec:
+  ports:
+  - nodePort: 30990
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app: prometheus-app
+  type: NodePort

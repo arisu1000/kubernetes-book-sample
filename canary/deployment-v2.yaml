@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-testapp-canary
+  labels:
+    app: myapp
+    version: canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: myapp
+        version: canary
+    spec:
+      containers:
+      - name: testapp
+        image: arisu1000/simple-container-app:v0.2
+        ports:
+        - containerPort: 8080
