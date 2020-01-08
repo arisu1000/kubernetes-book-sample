@@ -5,7 +5,7 @@
 ![cover](./readme/cover.jpg)
 
 ## 윈도우용 도커 데스크톱 사용자의 예제 파일 다운로드
-윈도우용 도커 데스크톱에서 이 책의 예제를 실행하는 분은 [example.zip](https://github.com/dybooksIT/kubernetes-book/raw/master/example.zip)를 다운로드하기 바랍니다. 해당 파일 안에는 윈도우에서 기본 제공하지 않는 base64 같은 명령의 실행 파일을 함께 포함했습니다.
+윈도우용 도커 데스크톱에서 이 책의 예제를 실행하는 분은 [별도의 예제 파일](https://bit.ly/2QAfhJA)을 다운로드하기 바랍니다. 해당 파일 안에는 윈도우에서 기본 제공하지 않는 base64 같은 명령의 실행 파일을 함께 포함했습니다.
 
 ## 구매하기
 [교보문고](http://bit.ly/2tBz6qz) | [YES24](http://bit.ly/2svX5Yc) | [알라딘](http://bit.ly/37F7z6z) | [인터파크](http://bit.ly/2QT2bpB) | [반디앤루니스](http://bit.ly/37AFHR0)
