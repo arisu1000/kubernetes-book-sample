@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: test
@@ -10,16 +10,26 @@ spec:
     http:
       paths:
       - path: /foos1
+        pathType: Prefix
         backend:
-          serviceName: s1
-          servicePort: 80
+          service:
+            name: s1
+            port: 
+              number: 80
       - path: /bars2
+        pathType: Prefix
         backend:
-          serviceName: s2
-          servicePort: 80
+          service:
+            name: s2
+            port: 
+              number: 80
   - host: bar.foo.com
     http:
       paths:
-      - backend:
-          serviceName: s2
-          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: s2
+            port: 
+              number: 80

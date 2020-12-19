@@ -18,4 +18,4 @@ spec:
       - name: nginx-app
         image: nginx
         ports:
-        - containerPort: 8080
+        - containerPort: 80
