@@ -1,9 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana-app
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-app
   template:
     metadata:
       labels:
