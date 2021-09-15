@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
    - name: web
-     image: nginx
+     image: nginx:latest
    - name: ubuntu
      image: ubuntu:16.04
      command: ["/bin/sh", "-c", "while : ;do curl http://localhost:80/; sleep 10; done"]

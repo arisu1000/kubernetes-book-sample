@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: kube-system
   name: prometheus-app
   labels:
     app: prometheus-app
@@ -39,7 +40,7 @@ metadata:
   labels:
     app: prometheus-app
   name: prometheus-app-svc
-  namespace: default
+  namespace: kube-system
 spec:
   ports:
   - nodePort: 30990

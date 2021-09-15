@@ -25,5 +25,5 @@ spec:
       volumes:
       - name: nfs-vol
         nfs:
-          server: 10.1.6.126    # 여기에 nfs-server pod의 ip를 넣습니다.
+          server: 172.17.0.5    # 여기에 nfs-server pod의 ip를 넣습니다.
           path: /

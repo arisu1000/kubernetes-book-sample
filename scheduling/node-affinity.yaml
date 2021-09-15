@@ -13,7 +13,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: beta.kubernetes.io/os
+          - key: kubernetes.io/os
             operator: In
             values:
             - linux
@@ -21,9 +21,9 @@ spec:
           - key: disktype
             operator: Exists
           # - key: core
-            # operator: Gt  
-            # values: 
-            # - "4"
+          #   operator: Gt  
+          #   values: 
+          #   - "4"
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 10
         preference:

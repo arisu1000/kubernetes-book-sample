@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: kube-system
   name: grafana-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: grafana-app
+      k8s-app: grafana-app
   template:
     metadata:
       labels:
-        k8s-app: grafana
+        k8s-app: grafana-app
     spec:
       containers:
       - name: grafana
@@ -33,6 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: kube-system
   labels:
     kubernetes.io/name: grafana-app
   name: grafana-app
@@ -42,5 +44,5 @@ spec:
     targetPort: 3000
     nodePort: 30300
   selector:
-    k8s-app: grafana
+    k8s-app: grafana-app
   type: NodePort
