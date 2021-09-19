@@ -1,4 +1,4 @@
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   # name : 아래의 spec 필드와 맞아야 한다. spec의 plural와 group를 조합한 값이와야 한다. <plural>.<group>
@@ -6,15 +6,44 @@ metadata:
 spec:
   # REST API 용 그룹 이름: /apis/<group>/<version>
   group: crd.example.com
-  # API 버전
-  version: v1
   # 이 CustomResourceDefinition이 지원하는 버전 정보
   versions:
-    - name: v1
-      # 버전이 사용가능한지 아닌지를 표시
-      served: true
-      # 스토리지 버전으로 지정되어야 하는 버전
-      storage: true
+  - name: v1
+    # 버전이 사용가능한지 아닌지를 표시
+    served: true
+    # 스토리지 버전으로 지정되어야 하는 버전
+    storage: true
+    schema:
+      # openAPIV3Schema는 사용자 정의 객체의 유효성을 검사하는 스키마
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              name:
+                type: string
+              image:
+                type: string
+                # pattern: '^[a-zA-Z0-9_.-:]*$'
+              ports:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    containerPort: 
+                      type: integer
+    additionalPrinterColumns:
+    - name: Age
+      type: date
+      # 중요도를 표시. 0이면 kubectl get명령으로 확인 가능
+      priority: 0
+      jsonPath: .metadata.creationTimestamp
+    - name: Image
+      type: string
+      description: my-awesome-cron-image:latest  # MyPod에서 사용할 image 정보
+      priority: 1
+      jsonPath: .spec.image                      
   # Namespaced/Cluster 범위 표시
   scope: Namespaced
   names:
@@ -27,14 +56,5 @@ spec:
     # CLI에서 사용할 줄인 단어
     shortNames:
     - mpod
-  additionalPrinterColumns:
-  - name: Age
-    type: date
-    # 중요도를 표시. 0이면 kubectl get명령으로 확인 가능
-    priority: 0
-    JSONPath: .metadata.creationTimestamp
-  - name: Image
-    type: string
-    description: my-awesome-cron-image:latest  # MyPod에서 사용할 image 정보
-    priority: 1
-    JSONPath: .spec.image
+    categories:
+    - all

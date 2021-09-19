@@ -7,7 +7,7 @@ spec:
   maxReplicas: 10
   minReplicas: 1
   scaleTargetRef:
-    apiVersion: extensions/v1beta1
+    apiVersion: apps/v1
     kind: Deployment
     name: kubernetes-simple-app
   targetCPUUtilizationPercentage: 30
